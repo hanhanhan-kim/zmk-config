@@ -40,7 +40,8 @@
    &kp ESC   &mt LGUI A &mt LALT S &mt LSHFT D &mt LCTRL F &kp G         &kp H           &mt RCTRL J  &mt RSHFT K   &mt RALT L   &mt RGUI SEMI &kp SQT
 // &kp LSHFT &kp Z      &kp X      &kp C       &kp V       &kp B         &kp N           &kp M        &kp COMMA     &kp DOT      &kp FSLH      &mt RSHFT ENT
    &trans    &trans     &trans     &trans      &trans      &trans        &trans          &trans       &trans        &trans       &trans        &trans
-                                   &kp LALT    &mo LOWER   &kp ENT       &lt NAV SPACE   &mo RAISE    &kp LCTRL
+//                                 &kp LALT    &mo LOWER   &kp ENT       &lt NAV SPACE   &mo RAISE    &kp LCTRL
+                                   &trans   &trans   &trans      &trans    &trans    &trans
                         >;
                 };
 
