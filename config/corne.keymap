@@ -8,6 +8,12 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
+#define DEFAULT 0
+#define LOWER 1
+#define RAISE 2
+#define ADJUST 3
+#define NAV 4
+
 &mt {
     tapping-term-ms = <200>;
 };
@@ -33,7 +39,7 @@
    &kp TAB   &kp Q      &kp W      &kp E       &kp R       &kp T         &kp Y           &kp U        &kp I         &kp O        &kp P         &kp BSPC
    &kp ESC   &mt LGUI A &mt LALT S &mt LSHFT D &mt LCTRL F &kp G         &kp H           &mt RCTRL J  &mt RSHFT K   &mt RALT L   &mt RGUI SEMI &kp SQT
    &kp LSHFT &kp Z      &kp X      &kp C       &kp V       &kp B         &kp N           &kp M        &kp COMMA     &kp DOT      &kp FSLH      &mt RSHFT ENT
-                                   &kp LALT    &mo 1       &kp ENT       &lt 4 SPACE     &mo 2        &kp LCTRL
+                                   &kp LALT    &mo LOWER   &kp ENT       &lt NAV SPACE   &mo RAISE    &kp LCTRL
                         >;
                 };
 
