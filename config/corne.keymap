@@ -14,10 +14,6 @@
 #define ADJUST 3
 #define NAV 4
 
-&mt {
-    tapping-term-ms = <200>;
-};
-
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -29,10 +25,22 @@
 };
 
 /  {
-        keymap {
-                compatible = "zmk,keymap";
+    behaviors {
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+    };
 
-                default_layer {
+    keymap {
+            compatible = "zmk,keymap";
+
+            default_layer {
 // -----------------------------------------------------------------------------------------
 // | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
 // | ESC  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
@@ -41,12 +49,13 @@
 
                         bindings = <
    &kp TAB   &kp Q      &kp W      &kp E       &kp R       &kp T         &kp Y           &kp U        &kp I         &kp O        &kp P         &kp BSPC
-   &kp ESC   &mt LGUI A &mt LALT S &mt LSHFT D &mt LCTRL F &kp G         &kp H           &mt RCTRL J  &mt RSHFT K   &mt RALT L   &mt RGUI SEMI &kp SQT
+   &kp ESC   &hm LGUI A &hm LALT S &hm LSHFT D &hm LCTRL F &kp G         &kp H           &hm RCTRL J  &hm RSHFT K   &hm RALT L   &hm RGUI SEMI &kp SQT
    &kp LSHFT &kp Z      &kp X      &kp C       &kp V       &kp B         &kp N           &kp M        &kp COMMA     &kp DOT      &kp FSLH      &mt RSHFT RET
                                    &kp LALT    &mo LOWER   &kp RET       &lt NAV SPACE   &mo RAISE    &kp LCTRL
                         >;
-                };
-                lower_layer {
+            };
+
+            lower_layer {
 // -----------------------------------------------------------------------------------------
 // |  ~   |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | DEL  |
 // | DEL  | F1  | F2  | F3  | F4  | F5  |   | F6  |  _  |  +  |  {  |  }  |  |   |
@@ -59,8 +68,9 @@
    &kp CAPS  &kp F7   &kp F8 &kp F9   &kp F10  &kp F11     &kp F12   &kp PSCRN &trans          &kp HOME &kp END  &trans
                     	     &trans   &trans   &trans      &trans    &trans    &trans
                         >;
-                };
-                raise_layer {
+            };
+
+            raise_layer {
 // -----------------------------------------------------------------------------------------
 // |   `  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | DEL  |
 // | DEL  | F1  | F2  | F3  | F4  | F5  |   | F6  |  -  |  =  |  [  |  ]  |  \   |
@@ -73,8 +83,9 @@
    &kp CAPS  &kp F7   &kp F8 &kp F9   &kp F10  &kp F11     &kp F12   &kp PSCRN &trans    &kp HOME  &kp END  &trans
                     	     &trans   &trans   &trans      &trans    &trans    &trans
                         >;
-                };
-                adjust_layer {
+            };
+
+            adjust_layer {
 // -----------------------------------------------------------------------------------------
 // |RESET | BT1 | BT2 | BT3 | BT4 | BT5 |   |BTCLR|     |     |     |     |RESET |
 // |      |     |     |     |     |     |   |     |     |     |     |     |      |
@@ -86,8 +97,9 @@
    &trans       &trans       &trans       &trans       &trans       &trans         &trans       &trans  &trans  &trans  &trans  &trans
                           	          &trans       &trans       &trans         &trans       &trans  &trans
                         >;
-                };
-                nav_layer {
+            };
+
+            nav_layer {
 // ------------------------------------------------------------------f-----------------------
 // |      |     |     |     |     |     |   |     |     |     |     |     |      |
 // |      |     |     |     |     |     |   |     |     |     |     |     |      |
@@ -99,6 +111,6 @@
    &trans    &trans    &trans    &trans   &trans    &trans     &trans   &trans    &trans    &trans  &trans     &trans
                                  &trans    &trans   &trans     &trans   &trans    &trans
                         >;
-                };
+            };
         };
 };
