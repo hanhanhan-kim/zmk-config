@@ -35,15 +35,6 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        hs: homerow_shift {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_SHIFT";
-            #binding-cells = <2>;
-            tapping-term-ms = <175>; // only change
-            quick_tap_ms = <0>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-        };
     };
 
     keymap {
@@ -97,7 +88,7 @@
             adjust_layer {
 // -----------------------------------------------------------------------------------------
 // |RESET | BT1 | BT2 | BT3 | BT4 | BT5 |   |BTCLR|     |     |     |     |RESET |
-// |      |     |     |     |     |     |   |     |     |     |     |     |      |
+// |      |     |     |     |     |     |   |     |     |     |     |     |      | 
 // |      |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    |     |     |     |   |     |     |     |
                         bindings = <
