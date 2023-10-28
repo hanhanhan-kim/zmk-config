@@ -21,6 +21,6 @@ include:
     
   - board: technikable
 
-  - board: nice_nano_v2
-    shield: ffkb
+  # - board: nice_nano_v2
+  #   shield: ffkb
     
