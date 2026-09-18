@@ -1,31 +1,18 @@
-# Copyright (c) 2020 Pete Johanson
 # SPDX-License-Identifier: MIT
 
 if BOARD_TECHNIKABLE
 
-config BOARD
-	default "technikable"
-
 config ZMK_KEYBOARD_NAME
 	default "Technikable"
 
-if USB
+if USB_DEVICE_STACK
 
 config USB_NRFX
 	default y
 
-config USB_DEVICE_STACK
-	default y
-
-endif # USB
+endif # USB_DEVICE_STACK
 
 config BT_CTLR
 	default BT
-
-config ZMK_BLE
-	default y
-
-config ZMK_USB
-	default y
 
 endif # BOARD_TECHNIKABLE

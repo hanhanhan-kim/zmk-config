@@ -6,6 +6,7 @@
 
 /dts-v1/;
 #include <nordic/nrf52840_qiaa.dtsi>
+#include <common/nordic/nrf52840_uf2_boot_mode.dtsi>
 #include <dt-bindings/zmk/matrix_transform.h>
 
 / {
@@ -30,13 +31,11 @@
 		compatible = "gpio-leds";
 		blue_led: led_0 {
 			gpios = <&gpio1 2 GPIO_ACTIVE_HIGH>;
-			label = "Blue LED";
 		};
 	};
 
 	vbatt: vbatt {
 		compatible = "zmk,battery-nrf-vddh";
-		label = "BATTERY";
 	};
 
 	ortho_transform: ortho_transform {
@@ -80,7 +79,7 @@
 	
 	kscan: kscan {
 		compatible = "zmk,kscan-gpio-matrix";
-		label = "KSCAN";
+		wakeup-source;
 		debounce-press-ms = <1>;
 		debounce-release-ms = <5>;
 
@@ -109,6 +108,10 @@
 	};
 };
 
+&reg1 {
+	regulator-initial-mode = <NRF5X_REG_MODE_DCDC>;
+};
+
 &adc {
 	status = "okay";
 };
@@ -126,11 +129,10 @@
 };
 
 
-&usbd {
+zephyr_udc0: &usbd {
 	status = "okay";
 	cdc_acm_uart0: cdc_acm_uart0 {
 		compatible = "zephyr,cdc-acm-uart";
-		label = "CDC_ACM_0";
 	};
 }; 
 
