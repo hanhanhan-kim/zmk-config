@@ -35,6 +35,15 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        // Esc, but Cmd+Esc sends Cmd+` so app/window cycling sits on Tab/Esc like a normal keyboard's Tab/`
+        esc_grave: esc_grave {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+            keep-mods = <(MOD_LGUI|MOD_RGUI)>;
+        };
     };
 
     keymap {
@@ -43,8 +52,8 @@
             default_layer {
                             bindings = <
     &kp TAB    &kp Q      &kp W      &kp E          &kp R          &kp T          &kp Y            &kp U          &kp I        &kp O      &kp P         &kp BKSP
-    &kp ESC    &hm LCTRL A &hm LALT S &hm LSHFT D   &hm LGUI F     &kp G          &kp H            &hm RGUI J     &hm RSHFT K  &hm RALT L &hm RCTRL SEMI &kp SQT
-    &kp GRAVE   &kp Z      &kp X      &kp C          &kp V          &kp B          &kp N            &kp M          &kp COMMA    &kp DOT    &kp FSLH      &kp RET
+    &esc_grave &hm LCTRL A &hm LALT S &hm LSHFT D   &hm LGUI F     &kp G          &kp H            &hm RGUI J     &hm RSHFT K  &hm RALT L &hm RCTRL SEMI &kp SQT
+    &kp CAPS   &kp Z      &kp X      &kp C          &kp V          &kp B          &kp N            &kp M          &kp COMMA    &kp DOT    &kp FSLH      &kp RET
                           &kp LC(LALT) &kp LGUI     &mo LOWER      &lt NAV SPACE  &lt NAV SPACE    &mo RAISE      &kp LG(LS(N4)) &kp LG(LS(N5))
                             >;
             };
@@ -53,7 +62,7 @@
                         bindings = <
    &kp TILDE &kp EXCL &kp AT   &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp DEL
    &kp DEL   &kp F1   &kp F2   &kp F3   &kp F4   &kp F5      &kp F6    &kp UNDER &kp PLUS        &kp LBRC &kp RBRC &kp PIPE
-   &kp CAPS &kp F7   &kp F8   &kp F9   &kp F10  &kp F11     &kp F12   &trans    &trans          &kp HOME &kp END  &trans
+   &trans   &kp F7   &kp F8   &kp F9   &kp F10  &kp F11     &kp F12   &trans    &trans          &kp HOME &kp END  &trans
                       &trans   &trans   &trans   &trans      &trans    &trans    &trans          &trans   
                         >;
             };
