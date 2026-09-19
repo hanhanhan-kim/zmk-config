@@ -34,6 +34,15 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        // Esc, but Cmd+Esc sends Cmd+` so app/window cycling sits on Tab/Esc like a normal keyboard's Tab/`
+        esc_grave: esc_grave {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp ESC>, <&kp GRAVE>;
+            mods = <(MOD_LGUI|MOD_RGUI)>;
+            keep-mods = <(MOD_LGUI|MOD_RGUI)>;
+        };
     };
 
     keymap {
@@ -42,15 +51,16 @@
             default_layer {
 // -----------------------------------------------------------------------------------------
 // | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// | ESC  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// |  `   |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |   |
-//                    |LOWER|SPC-N|BKS-A|   | ENT |SPC-N |RAISE|
+// | ESC* |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
+// | CAPS |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |DICT  |
+//                    |LOWER|SPC-N|BKS-G|   | ENT |SPC-N |RAISE|
+// ESC* = Esc, Cmd+Esc sends Cmd+`.  DICT = Ctrl+Opt for Wispr Flow.  Home row: Ctrl Alt Shift Cmd.
 
                         bindings = <
-   &kp TAB   &kp Q      &kp W      &kp E       &kp R         &kp T          &kp Y         &kp U          &kp I         &kp O        &kp P         &kp BSPC
-   &kp ESC   &hm LGUI A &hm LALT S &hm LSHFT D &hm LCTRL F   &kp G          &kp H         &hm RCTRL J    &hm RSHFT K   &hm RALT L   &hm RGUI SEMI &kp SQT
-   &kp GRAVE  &kp Z      &kp X      &kp C       &kp V         &kp B          &kp N         &kp M          &kp COMMA     &kp DOT      &kp FSLH      &trans
-                                   &mo LOWER   &lt NAV SPACE &hm LALT BSPC  &kp RET       &lt NAV SPACE  &mo RAISE
+   &kp TAB    &kp Q       &kp W      &kp E       &kp R         &kp T          &kp Y         &kp U          &kp I         &kp O        &kp P          &kp BSPC
+   &esc_grave &hm LCTRL A &hm LALT S &hm LSHFT D &hm LGUI F    &kp G          &kp H         &hm RGUI J     &hm RSHFT K   &hm RALT L   &hm RCTRL SEMI &kp SQT
+   &kp CAPS   &kp Z       &kp X      &kp C       &kp V         &kp B          &kp N         &kp M          &kp COMMA     &kp DOT      &kp FSLH       &kp LC(LALT)
+                                    &mo LOWER   &lt NAV SPACE &hm LGUI BSPC  &kp RET       &lt NAV SPACE  &mo RAISE
                         >;
             };
 
@@ -58,13 +68,14 @@
 // -----------------------------------------------------------------------------------------
 // |  ~   |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | DEL  |
 // | DEL  | F1  | F2  | F3  | F4  | F5  |   | F6  |  _  |  +  |  {  |  }  |  |   |
-// | CAPS | F7  | F8  | F9  | F10 | F11 |   | F12 |PSCR |     |HOME | END |      |
+// |      | F7  | F8  | F9  | F10 | F11 |   | F12 |SHOT |     |HOME | END |      |
 //                    |     |     |     |   |     |     |     |
+// SHOT = Cmd+Shift+4 screenshot
 
                         bindings = <
    &kp TILDE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp DEL
    &kp DEL   &kp F1   &kp F2 &kp F3   &kp F4   &kp F5      &kp F6    &kp UNDER &kp PLUS        &kp LBRC &kp RBRC &kp PIPE
-   &kp CAPS &kp F7   &kp F8 &kp F9   &kp F10  &kp F11     &kp F12   &kp PSCRN &trans          &kp HOME &kp END  &trans
+   &trans    &kp F7   &kp F8 &kp F9   &kp F10  &kp F11     &kp F12   &kp LG(LS(N4)) &trans     &kp HOME &kp END  &trans
                     	     &trans   &trans   &trans      &trans    &trans    &trans
                         >;
             };
@@ -73,13 +84,14 @@
 // -----------------------------------------------------------------------------------------
 // |   `  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | DEL  |
 // | DEL  | F1  | F2  | F3  | F4  | F5  |   | F6  |  -  |  =  |  [  |  ]  |  \   |
-// |      | F7  | F8  | F9  | F10 | F11 |   | F12 |PSCR |     |HOME | END |      |
+// |      | F7  | F8  | F9  | F10 | F11 |   | F12 | REC |     |HOME | END |      |
 //                    |     |     |     |   |     |     |     |
+// REC = Cmd+Shift+5 screen recording
 
                         bindings = <
    &kp GRAVE &kp N1   &kp N2 &kp N3   &kp N4   &kp N5      &kp N6    &kp N7    &kp N8    &kp N9    &kp N0   &kp DEL
    &kp DEL   &kp F1   &kp F2 &kp F3   &kp F4   &kp F5      &kp F6    &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH
-   &trans    &kp F7   &kp F8 &kp F9   &kp F10  &kp F11     &kp F12   &kp PSCRN &trans    &kp HOME  &kp END  &trans
+   &trans    &kp F7   &kp F8 &kp F9   &kp F10  &kp F11     &kp F12   &kp LG(LS(N5)) &trans &kp HOME  &kp END  &trans
                     	     &trans   &trans   &trans      &trans    &trans    &trans
                         >;
             };
