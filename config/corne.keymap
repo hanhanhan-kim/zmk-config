@@ -43,13 +43,13 @@
 // -----------------------------------------------------------------------------------------
 // | TAB  |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
 // | ESC  |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | CAPS |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |   |
+// |  `   |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  |   |
 //                    |LOWER|SPC-N|BKS-A|   | ENT |SPC-N |RAISE|
 
                         bindings = <
    &kp TAB   &kp Q      &kp W      &kp E       &kp R         &kp T          &kp Y         &kp U          &kp I         &kp O        &kp P         &kp BSPC
    &kp ESC   &hm LGUI A &hm LALT S &hm LSHFT D &hm LCTRL F   &kp G          &kp H         &hm RCTRL J    &hm RSHFT K   &hm RALT L   &hm RGUI SEMI &kp SQT
-   &kp CAPS  &kp Z      &kp X      &kp C       &kp V         &kp B          &kp N         &kp M          &kp COMMA     &kp DOT      &kp FSLH      &trans
+   &kp GRAVE  &kp Z      &kp X      &kp C       &kp V         &kp B          &kp N         &kp M          &kp COMMA     &kp DOT      &kp FSLH      &trans
                                    &mo LOWER   &lt NAV SPACE &hm LALT BSPC  &kp RET       &lt NAV SPACE  &mo RAISE
                         >;
             };
@@ -58,13 +58,13 @@
 // -----------------------------------------------------------------------------------------
 // |  ~   |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | DEL  |
 // | DEL  | F1  | F2  | F3  | F4  | F5  |   | F6  |  _  |  +  |  {  |  }  |  |   |
-// |      | F7  | F8  | F9  | F10 | F11 |   | F12 |PSCR |     |HOME | END |      |
-//                    |CAPS |     |     |   |     |     |     |
+// | CAPS | F7  | F8  | F9  | F10 | F11 |   | F12 |PSCR |     |HOME | END |      |
+//                    |     |     |     |   |     |     |     |
 
                         bindings = <
    &kp TILDE &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp DEL
    &kp DEL   &kp F1   &kp F2 &kp F3   &kp F4   &kp F5      &kp F6    &kp UNDER &kp PLUS        &kp LBRC &kp RBRC &kp PIPE
-   &trans    &kp F7   &kp F8 &kp F9   &kp F10  &kp F11     &kp F12   &kp PSCRN &trans          &kp HOME &kp END  &trans
+   &kp CAPS &kp F7   &kp F8 &kp F9   &kp F10  &kp F11     &kp F12   &kp PSCRN &trans          &kp HOME &kp END  &trans
                     	     &trans   &trans   &trans      &trans    &trans    &trans
                         >;
             };
@@ -73,7 +73,7 @@
 // -----------------------------------------------------------------------------------------
 // |   `  |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | DEL  |
 // | DEL  | F1  | F2  | F3  | F4  | F5  |   | F6  |  -  |  =  |  [  |  ]  |  \   |
-// | CAPS | F7  | F8  | F9  | F10 | F11 |   | F12 |PSCR |     |HOME | END |      |
+// |      | F7  | F8  | F9  | F10 | F11 |   | F12 |PSCR |     |HOME | END |      |
 //                    |     |     |     |   |     |     |     |
 
                         bindings = <
