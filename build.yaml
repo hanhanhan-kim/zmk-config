@@ -25,4 +25,5 @@ include:
   - board: nice_nano//zmk
     shield: corne_right nice_view_adapter nice_view
     snippet: zmk-usb-logging
+    cmake-args: -DCONFIG_LOG_BUFFER_SIZE=32768 -DCONFIG_DISPLAY_LOG_LEVEL_DBG=y -DCONFIG_SPI_LOG_LEVEL_DBG=y
   - board: technikable//zmk
