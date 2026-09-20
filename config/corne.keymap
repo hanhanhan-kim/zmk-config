@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 
 #define DEFAULT 0
 #define LOWER 1
@@ -103,7 +104,7 @@
 // |      |     |     |     |     |     |   |     |     |     |     |     |      |
 //                    |     |     |     |   |     |     |     |
                         bindings = <
-   &bootloader  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &bt BT_CLR   &bt BT_CLR_ALL &trans &trans &trans &bootloader
+   &bootloader  &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &bt BT_CLR   &bt BT_CLR_ALL &trans &ext_power EP_TOG &trans &bootloader
    &trans       &trans       &trans       &trans       &trans       &trans         &trans       &trans  &trans  &trans  &trans  &trans
    &trans       &trans       &trans       &trans       &trans       &trans         &trans       &trans  &trans  &trans  &trans  &trans
                           	              &trans       &trans       &trans         &trans       &trans  &trans
